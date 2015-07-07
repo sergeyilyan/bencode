@@ -37,7 +37,16 @@ public class BancodeTest extends TestCase {
 
 	public void test3() throws IOException {
 		Object object = Bencode.decode("d3:bar4:spam3:fooi42ee".getBytes());
-		assertTrue(new String(Bencode.encode(object))
-				.equals("d3:bar4:spam3:fooi42ee"));
+		assertTrue(new String(Bencode.encode(object)).equals("d3:bar4:spam3:fooi42ee"));
+	}
+
+	public void test4() throws IOException {
+		Object object = Bencode.decode("i-43e".getBytes());
+		assertTrue(object.equals(new Number(-43L)));
+	}
+	
+	public void test5() throws IOException {
+		Object object = Bencode.decode("i-43e".getBytes());
+		assertTrue(new String(Bencode.encode(object)).equals("i-43e"));
 	}
 }

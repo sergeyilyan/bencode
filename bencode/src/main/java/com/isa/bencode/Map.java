@@ -3,7 +3,6 @@ package com.isa.bencode;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class Map extends Object{
@@ -24,7 +23,7 @@ public class Map extends Object{
 	
 	public Map(InputStream inputStream,char before) throws IOException {
 		if(before!='d')throw new RuntimeException();
-		this.value=new HashMap<Object,Object>();
+		this.value=new LinkedHashMap<Object,Object>();
 		char c;
 		while((c = (char)inputStream.read())!='e'){
 			Object key = Object.create(inputStream,c);
